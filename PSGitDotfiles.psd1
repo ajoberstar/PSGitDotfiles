@@ -12,7 +12,7 @@
 RootModule = 'PSGitDotfiles.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -69,7 +69,7 @@ PowerShellVersion = '5.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = '*-GitDotfiles'
+FunctionsToExport = 'Invoke-GitDotfiles', 'Initialize-GitDotfiles', 'Install-GitDotfiles', 'Uninstall-GitDotfiles'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -101,13 +101,13 @@ PrivateData = @{
         LicenseUri = 'https://github.com/ajoberstar/PSGitDotfiles/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/ajoberstar/GitDotfiles'
+        ProjectUri = 'https://github.com/ajoberstar/PSGitDotfiles'
 
         # A URL to an icon representing this module.
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'https://github.com/ajoberstar/GitDotfiles/releases'
+        ReleaseNotes = 'https://github.com/ajoberstar/PSGitDotfiles/releases'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
