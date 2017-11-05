@@ -1,5 +1,7 @@
 # PSGitDotfiles
 
+[![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PSGitDotfiles.svg)](https://www.powershellgallery.com/packages/PSGitDotfiles)
+
 A simple Git-based dotfiles approach.
 
 ## What is it?
