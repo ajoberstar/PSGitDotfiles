@@ -74,6 +74,7 @@ Function Install-GitDotfiles {
     )
     & git clone --bare "$Uri" "$env:USERPROFILE/.dotfiles/"
     Invoke-GitDotfiles config --local status.showuntrackedfiles no
+    Invoke-GitDotfiles checkout --force master
 }
 
 Function Uninstall-GitDotfiles {
