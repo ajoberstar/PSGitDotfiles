@@ -4,8 +4,8 @@ Function Invoke-GitDotfiles {
   Invokes a git command in your dotfiles repository.
 
   .DESCRIPTION
-  Invokes a git command in the dotfiles repo stored in $env:USERPROFILE/.dotfiles/, using
-  $env:USERPROFILE as the working tree. All arguments are treated as if they were passed
+  Invokes a git command in the dotfiles repo stored in ~/.dotfiles/, using
+  ~ as the working tree. All arguments are treated as if they were passed
   to the git command directly.
 
   .EXAMPLE
@@ -17,7 +17,7 @@ Function Invoke-GitDotfiles {
   .EXAMPLE
   Invoke-GitDotfiles push
   #>
-  & git --git-dir `"$env:USERPROFILE/.dotfiles/`" --work-tree=`"$env:USERPROFILE`" $args
+  & git --git-dir `"$(Get-Home)/.dotfiles/`" --work-tree=`"$(Get-Home)`" $args
 }
 
 Function Initialize-GitDotfiles {
@@ -26,8 +26,8 @@ Function Initialize-GitDotfiles {
   Initializes a new git dotfies repository.
 
   .DESCRIPTION
-  Initializes a new git dotfiles repository as a bare repo in $env:USERPROFILE/.dotfiles/.
-  The $env:USERPROFILE will be used as the working tree. Untracked files will not be shown
+  Initializes a new git dotfiles repository as a bare repo in ~/.dotfiles/.
+  The ~ will be used as the working tree. Untracked files will not be shown
   by the status command since most of your home directory won't be managed.
 
   .PARAMETER Uri
@@ -44,7 +44,7 @@ Function Initialize-GitDotfiles {
   Param(
     [string] $Uri
   )
-  & git init --bare "$env:USERPROFILE/.dotfiles/"
+  & git init --bare "$(Get-Home)/.dotfiles/"
   Invoke-GitDotfiles config --local status.showuntrackedfiles no
   Invoke-GitDotfiles remote add origin "$Uri"
 }
@@ -55,8 +55,8 @@ Function Install-GitDotfiles {
   Installs a new git dotfies repository from a remote.
 
   .DESCRIPTION
-  Installs a new git dotfiles repository as a bare repo in $env:USERPROFILE/.dotfiles/.
-  The $env:USERPROFILE will be used as the working tree. Untracked files will not be shown
+  Installs a new git dotfiles repository as a bare repo in ~/.dotfiles/.
+  The ~ will be used as the working tree. Untracked files will not be shown
   by the status command since most of your home directory won't be managed.
 
   The repo will be cloned from the provided URI.
@@ -64,17 +64,23 @@ Function Install-GitDotfiles {
   .PARAMETER Uri
   URI to the remote to clone from.
 
+  .PARAMETER Branch
+  Branch to checkout after clone. Defaults to master.
+
   .EXAMPLE
   Install-GitDotfiles -Uri https://github.com/ajoberstar/PSGitDotfiles.git
   #>
   [CmdletBinding()]
   Param(
     [Parameter(Mandatory = $True)]
-    [string] $Uri
+    [string] $Uri,
+
+    [Parameter()]
+    [string] $Branch = "master"
   )
-  & git clone --bare "$Uri" "$env:USERPROFILE/.dotfiles/"
+  & git clone --bare "$Uri" "$(Get-Home)/.dotfiles/"
   Invoke-GitDotfiles config --local status.showuntrackedfiles no
-  Invoke-GitDotfiles checkout --force master
+  Invoke-GitDotfiles checkout --force $Branch
 }
 
 Function Uninstall-GitDotfiles {
@@ -83,7 +89,7 @@ Function Uninstall-GitDotfiles {
   Delete the git dotfiles repository.
 
   .DESCRIPTION
-  Delete the git dotfiles repository in $env:USERPROFILE/.dotfiles/.
+  Delete the git dotfiles repository in ~/.dotfiles/.
 
   .EXAMPLE
   Uninstall-GitDotfiles
@@ -91,7 +97,15 @@ Function Uninstall-GitDotfiles {
   [CmdletBinding()]
   Param()
 
-  Remove-Item -Path "$env:USERPROFILE/.dotfiles/" -Recurse -Force
+  Remove-Item -Path "$(Get-Home)/.dotfiles/" -Recurse -Force
+}
+
+Function Get-Home {
+  If ($PSVersionTable.Platform -eq 'Unix') {
+    $env:HOME
+  } Else {
+    $env:USERPROFILE
+  }
 }
 
 New-Alias -Name dot -Value Invoke-GitDotfiles
