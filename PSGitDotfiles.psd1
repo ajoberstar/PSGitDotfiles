@@ -107,7 +107,7 @@
       # IconUri = ''
 
       # ReleaseNotes of this module
-      ReleaseNotes = 'https://github.com/ajoberstar/PSGitDotfiles/releases'
+      ReleaseNotes = 'https://github.com/ajoberstar/PSGitDotfiles/blob/master/CHANGELOG.md'
 
       # External dependent modules of this module
       # ExternalModuleDependencies = ''
