@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+_None_
+
+## [1.0.0] - 2022-08-13
+
 ### Enhancements
 
 - Re-license project under MIT license (for more user flexibility)
@@ -33,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[unreleased]: https://github.com/ajoberstar/PSGitDotfiles/compare/0.2.0...main
+[unreleased]: https://github.com/ajoberstar/PSGitDotfiles/compare/1.0.0...main
+[1.0.0]: https://github.com/ajoberstar/PSGitDotfiles/compare/0.2.0...1.0.0
 [0.2.0]: https://github.com/ajoberstar/PSGitDotfiles/compare/0.1.2...0.2.0
 [0.1.2]: https://github.com/ajoberstar/PSGitDotfiles/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/ajoberstar/PSGitDotfiles/compare/0.1.0...0.1.1
