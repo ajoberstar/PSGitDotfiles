@@ -27,7 +27,7 @@
   CompanyName       = 'Unknown'
 
   # Copyright statement for this module
-  Copyright         = '(c) 2017 Andrew Oberstar. All rights reserved.'
+  Copyright         = '(c) 2017-2018 Andrew Oberstar. All rights reserved.'
 
   # Description of the functionality provided by this module
   Description       = 'A simple Git-based dotfiles approach.'
